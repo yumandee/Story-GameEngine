@@ -1,0 +1,12 @@
+.vs
+Debug
+Release
+
+Story/Debug
+Story/Release
+
+Adventure/Debug
+Adventure/Release
+
+glfw/build
+
