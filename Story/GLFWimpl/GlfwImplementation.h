@@ -1,15 +1,19 @@
 #pragma once
-#include <string> 
-namespace Bubble {
-    class WindowImplementation
-    {
-    public:
-        virtual void Init() = 0;
-        virtual void CreateWindow(int width, int height, const std::string& name) = 0;
-        virtual void PollEvents() = 0;
-        virtual void SwapBuffers() = 0;
-        virtual int GetWindowWidth() const = 0;
-        virtual int GetWindowHeight() const = 0;
-    };
-}
+#include "WindowImplementation.h"
+#include "glfw/glfw3.h"
 
+namespace Story {
+
+	class GlfwImplementation : public WindowImplementation {
+	public:
+		virtual void Init() override;
+		virtual void CreateWindow(int width, int height, const std::string& name) override;
+		virtual void SwapBuffers() override;
+		virtual void PollEvents() override;
+		virtual int GetWindowWidth() const override;
+		virtual int GetWindowHeight() const override;
+
+	private:
+		GLFWwindow* mWindow;
+	};
+}

@@ -1,6 +1,6 @@
 #pragma once
 #include <string> 
-namespace Bubble {
+namespace Story {
     class WindowImplementation
     {
     public:
