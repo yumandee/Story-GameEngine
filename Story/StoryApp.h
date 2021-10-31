@@ -2,7 +2,7 @@
 #include "StoryUtils.h"
 #include "GameWindow.h"
 
-namespace Bubble {
+namespace Story {
     class STORY_API StoryApp
     {
     public:
