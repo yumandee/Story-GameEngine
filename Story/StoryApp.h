@@ -14,5 +14,6 @@ namespace Story {
 
     private:
         GameWindow mGameWindow;
+        
     };
 }
