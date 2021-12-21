@@ -2,6 +2,7 @@
 #include "StoryUtils.h"
 #include "WindowImplementation.h"
 #include "pch.h"
+
 namespace Story {
 
     class STORY_API GameWindow

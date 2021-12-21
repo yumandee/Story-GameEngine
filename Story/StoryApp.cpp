@@ -3,6 +3,7 @@
 // GLFW - supports multiple platforms and creates a window 
 #include "GLFW/glfw3.h"
 
+
 namespace Story {
     void StoryApp::Run() {
         std::cout << "Story running..." << std::endl;

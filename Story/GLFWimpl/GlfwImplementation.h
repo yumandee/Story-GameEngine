@@ -2,6 +2,7 @@
 #include "WindowImplementation.h"
 #include "glfw/glfw3.h"
 
+
 namespace Story {
 
 	class GlfwImplementation : public WindowImplementation {

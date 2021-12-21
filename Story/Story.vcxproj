@@ -55,9 +55,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>STORY_LIB;STORY_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\glfw\include;C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\Story;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\glad\include;C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\glfw\include;C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\Story;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -72,9 +73,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>STORY_LIB;STORY_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\glfw\include;C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\Story;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\glad\include;C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\glfw\include;C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\Story;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,6 +104,9 @@
     <ClCompile Include="StoryApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\glad\glad.vcxproj">
+      <Project>{00613a0d-ae23-465a-ac59-2c9378419a4f}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\glfw\build\src\glfw.vcxproj">
       <Project>{80b79243-aa05-353b-a80d-75946c9f3c2e}</Project>
     </ProjectReference>
