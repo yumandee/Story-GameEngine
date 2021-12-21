@@ -70,7 +70,15 @@ namespace Story
       glDeleteShader(fragmentShader);
    }
 
-	void OpenGLShader::Use()
+   void OpenGLShader::SetVec2IntUniform(const std::string &unifName, int first, int second)
+   {
+      assert(mShaderProgram);
+      glUseProgram(mShaderProgram);
+      int location{glGetUniformLocation(mShaderProgram, unifName.c_str())};
+      glUniform2i(location, first, second);
+   }
+
+   void OpenGLShader::Use()
 	{
       glUseProgram(mShaderProgram);
 	}

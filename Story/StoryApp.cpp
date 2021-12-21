@@ -3,6 +3,7 @@
 #include "StoryApp.h"
 #include "Sprite.h"
 #include "Shader.h"
+#include "Renderer.h"
 
 #define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
@@ -21,57 +22,32 @@ namespace Story {
             std::cout << "Glad failed to initialize" << std::endl;
         }
 
-        glEnable(GL_BLEND);
-
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-        float vertices[] = {
-            -0.5f, -0.5f, 0.0f, 0.0f,
-            -0.5f,  0.5f, 0.0f, 1.0f,
-             0.5f, -0.5f, 1.0f, 0.0f,
-             0.5f,  0.5f, 1.0f, 1.0f};
-
-        unsigned indeces[] = {
-            0, 1, 2,
-            1, 2, 3};
-
-        unsigned int VBO, VAO, EBO;
-        glGenVertexArrays(1, &VAO);
-        glGenBuffers(1, &VBO);
-        glGenBuffers(1, &EBO);
-        glBindVertexArray(VAO);
-
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *)0);
-        glEnableVertexAttribArray(0);
-
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *)(2 * sizeof(float)));
-        glEnableVertexAttribArray(1);
-
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indeces), indeces, GL_STATIC_DRAW);
+        Renderer::Init();
 
         Story::Shader myShader;
-        myShader.Load("C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Shader/vertexShader1.glsl", "C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Shader/fragmentShader1.glsl");
-
+        myShader.Load(
+            "C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Shader/myVertexShader.glsl", 
+            "C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Shader/myFragmentShader.glsl");
+        myShader.SetVec2IntUniform(
+            "screenSize", 
+            mGameWindow.GetWindowWidth(), 
+            mGameWindow.GetWindowHeight());
         Story::Sprite fish;
         fish.LoadImage("C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Textures/Test.png");
 
         while (true) {
-            OnUpdate();
-            glClearColor(0.0f, 0.0f, 0.5f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT);
+            
+            Renderer::ClearFrame();
 
-            fish.Bind();
-            myShader.Use();
-            glBindVertexArray(VAO);
-            // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+            OnUpdate();
+
+            Renderer::Draw(fish, 100, 50, fish.GetWidth(), fish.GetHeight(), myShader);
 
             mGameWindow.SwapBuffers();
             mGameWindow.PollEvents();
         }
+
+        Renderer::ShutDown();
     }
 
     void StoryApp::OnUpdate() {
