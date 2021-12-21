@@ -1,13 +1,12 @@
 #pragma once
 
 #include "pch.h"
-#include "StoryUtils.h"
 #include "SpriteImplementation.h"
 #include "glad/glad.h"
 
 namespace Story 
 {
-   class STORY_API OpenGLSprite : public SpriteImplementation
+   class OpenGLSprite : public SpriteImplementation
    {
    public:
       OpenGLSprite();
