@@ -2,6 +2,7 @@
 #include "StoryApp.h"
 #include "StoryUtils.h"
 #include "GameWindow.h"
+#include "Sprite.h"
 
 #define START_STORY_GAME(classname) \
 int main() {\

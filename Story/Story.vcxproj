@@ -53,9 +53,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>STORY_LIB;STORY_WINDOWS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>STORY_LIB;STORY_WINDOWS;STORY_OPENGL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\glad\include;C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\glfw\include;C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\Story;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)stbi;$(SolutionDir)glad\include;$(SolutionDir)glfw\include;$(SolutionDir)Story;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -71,9 +71,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>STORY_LIB;STORY_WINDOWS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>STORY_LIB;STORY_WINDOWS;STORY_OPENGL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\glad\include;C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\glfw\include;C:\Users\mandee\OneDrive\College\senior\Fall\Game Engines\Adventure\Story;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)stbi;$(SolutionDir)glad\include;$(SolutionDir)glfw\include;$(SolutionDir)Story;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -88,7 +88,10 @@
   <ItemGroup>
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="GLFWimpl\GlfwImplementation.h" />
+    <ClInclude Include="OpenGLimpl\OpenGLSprite.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SpriteImplementation.h" />
     <ClInclude Include="Story.h" />
     <ClInclude Include="StoryApp.h" />
     <ClInclude Include="StoryUtils.h" />
@@ -97,10 +100,12 @@
   <ItemGroup>
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="GLFWimpl\GlfwImplementation.cpp" />
+    <ClCompile Include="OpenGLimpl\OpenGLSprite.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StoryApp.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +114,9 @@
     </ProjectReference>
     <ProjectReference Include="..\glfw\build\src\glfw.vcxproj">
       <Project>{80b79243-aa05-353b-a80d-75946c9f3c2e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\stbi\stbi.vcxproj">
+      <Project>{c4a569a6-0731-4f81-92b2-8b58205013c3}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,28 +1,27 @@
 #include "pch.h"
+
 #include "StoryApp.h"
-// GLFW - supports multiple platforms and creates a window 
+#include "Sprite.h"
+
+#define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
+#include "glad/glad.h"
+
+#include "stb_image.h"
 
 
 namespace Story {
     void StoryApp::Run() {
         std::cout << "Story running..." << std::endl;
-
-        // GLFWwindow* window; 
-
-        // glfwInit();
-
-        // GLFWmonitor* mon = glfwGetPrimaryMonitor();
-        // window = glfwCreateWindow(1920, 1080, "Test", mon, NULL);
         mGameWindow.CreateWindow(800, 600,"Test");
-        // window = glfwCreateWindow(800, 600, "Test", NULL, NULL);
 
+        Story::Sprite fish;
+        fish.LoadImage("C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Textures/Test.png");
         while (true) {
             OnUpdate();
+            fish.Bind();
             mGameWindow.SwapBuffers();
-            // glfwSwapBuffers(window);
             mGameWindow.PollEvents();
-            // glfwPollEvents();
         }
     }
 
