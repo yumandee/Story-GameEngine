@@ -15,7 +15,11 @@ elseif(UNIX)
    add_definitions(-DSTORY_LINUX)
 endif()
 
+add_definitions(-DSTORY_OPENGL)
+
 
 add_subdirectory(Adventure)
 add_subdirectory(Story)
 add_subdirectory(glfw)
+add_subdirectory(glad)
+add_subdirectory(stbi)

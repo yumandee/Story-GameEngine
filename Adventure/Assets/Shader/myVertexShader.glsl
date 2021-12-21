@@ -4,7 +4,10 @@ layout (location = 1) in vec2 aTexCoord;
 
 out vec2 TexCoords;
 
-void main() {
-   gl_Position = vec4(aPos.x, aPos.y, 0.0, 1.0);
+uniform ivec2 screenSize;
+
+void main() 
+{
+   gl_Position = vec4(2 * aPos.x/screenSize.x - 1, 2 * aPos.y/screenSize.y - 1, 0.0, 1.0);
    TexCoords = aTexCoord;
 }

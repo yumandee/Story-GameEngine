@@ -26,14 +26,14 @@ namespace Story {
 
         Story::Shader myShader;
         myShader.Load(
-            "C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Shader/myVertexShader.glsl", 
-            "C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Shader/myFragmentShader.glsl");
+            "Assets/Shader/myVertexShader.glsl", 
+            "Assets/Shader/myFragmentShader.glsl");
         myShader.SetVec2IntUniform(
             "screenSize", 
             mGameWindow.GetWindowWidth(), 
             mGameWindow.GetWindowHeight());
         Story::Sprite fish;
-        fish.LoadImage("C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Textures/Test.png");
+        fish.LoadImage("Assets/Textures/Test.png");
 
         while (true) {
             
