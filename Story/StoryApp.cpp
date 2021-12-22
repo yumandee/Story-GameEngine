@@ -13,8 +13,9 @@
 
 
 namespace Story {
+
     void StoryApp::Run() {
-        std::cout << "Story running..." << std::endl;
+        STORY_LOG("Story app running...");
         mGameWindow.CreateWindow(800, 600,"Test");
 
         if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -34,6 +35,8 @@ namespace Story {
             mGameWindow.GetWindowHeight());
         Story::Sprite fish;
         fish.LoadImage("Assets/Textures/Test.png");
+        
+        mTimeOfNextFrame = std::chrono::steady_clock::now() + mFrameDuration;
 
         while (true) {
             
@@ -43,8 +46,12 @@ namespace Story {
 
             Renderer::Draw(fish, 100, 50, fish.GetWidth(), fish.GetHeight(), myShader);
 
+            std::this_thread::sleep_until(mTimeOfNextFrame);
+
             mGameWindow.SwapBuffers();
             mGameWindow.PollEvents();
+
+            mTimeOfNextFrame += mFrameDuration;
         }
 
         Renderer::ShutDown();
