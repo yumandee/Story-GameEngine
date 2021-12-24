@@ -10,3 +10,8 @@
 #define STORY_API
 #endif
 
+#ifdef STORY_DEBUG
+#define STORY_LOG(x) std::cout << x << std::endl;
+#else
+#define STORY_LOG(x)
+#endif

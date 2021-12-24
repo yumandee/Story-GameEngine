@@ -3,6 +3,10 @@
 #include "StoryUtils.h"
 #include "GameWindow.h"
 #include "Sprite.h"
+#include "Shader.h"
+#include "Renderer.h"
+#include "Events.h"
+#include "KeyCodes.h"
 
 #define START_STORY_GAME(classname) \
 int main() {\

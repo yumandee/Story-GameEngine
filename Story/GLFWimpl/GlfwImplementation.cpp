@@ -4,13 +4,27 @@
 namespace Story {
 
 	void GlfwImplementation::Init() {
-		glfwInit();
+		if(glfwInit()  == GL_FALSE)
+			std::cout << "ERROR: GLFW failed to initialize" << std::endl;
 	}
 
 	void GlfwImplementation::CreateWindow(int width, int height, const std::string& name)
 	{
 		mWindow = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
 		glfwMakeContextCurrent(mWindow);
+
+		glfwSetWindowUserPointer(mWindow, &mCallbacks);
+
+		glfwSetKeyCallback(mWindow,
+			[](GLFWwindow* window, int key, int scancode, int action, int mods) {
+				if (action == GLFW_PRESS || action == GLFW_REPEAT)
+				{
+					CallbackFunctions* callbacks{ (CallbackFunctions*) glfwGetWindowUserPointer(window) };
+					KeyPressedEvent event{ key };
+					callbacks->KeyPressedCallback(event);
+				}
+			}
+		);
 	}
 
 	void GlfwImplementation::SwapBuffers() {
@@ -35,4 +49,8 @@ namespace Story {
 		return height;
 	}
 
+	void GlfwImplementation::SetKeyPressedCallback(std::function<void(KeyPressedEvent &)> func)
+	{
+		mCallbacks.KeyPressedCallback = func;
+	}
 }

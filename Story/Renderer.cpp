@@ -33,5 +33,6 @@ namespace Story
    {
       if (mInstance != nullptr)
          delete mInstance;
+         mInstance = nullptr;
    }
 }

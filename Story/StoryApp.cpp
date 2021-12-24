@@ -13,38 +13,28 @@
 
 
 namespace Story {
+
     void StoryApp::Run() {
-        std::cout << "Story running..." << std::endl;
-        mGameWindow.CreateWindow(800, 600,"Test");
-
-        if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-        {
-            std::cout << "Glad failed to initialize" << std::endl;
-        }
-
-        Renderer::Init();
-
-        Story::Shader myShader;
-        myShader.Load(
-            "C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Shader/myVertexShader.glsl", 
-            "C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Shader/myFragmentShader.glsl");
-        myShader.SetVec2IntUniform(
-            "screenSize", 
-            mGameWindow.GetWindowWidth(), 
-            mGameWindow.GetWindowHeight());
-        Story::Sprite fish;
-        fish.LoadImage("C:/Users/mandee/OneDrive/College/senior/Fall/Game Engines/Adventure/Story/Assets/Textures/Test.png");
+        STORY_LOG("Story app running...");
+        
+        mTimeOfNextFrame = std::chrono::steady_clock::now() + mFrameDuration;
 
         while (true) {
-            
+            mGameWindow.SetKeyPressedCallback([this](KeyPressedEvent &event)
+                                              { OnKeyPressed(event); });
+
             Renderer::ClearFrame();
 
             OnUpdate();
 
-            Renderer::Draw(fish, 100, 50, fish.GetWidth(), fish.GetHeight(), myShader);
+
+            std::this_thread::sleep_until(mTimeOfNextFrame);
 
             mGameWindow.SwapBuffers();
+
             mGameWindow.PollEvents();
+
+            mTimeOfNextFrame += mFrameDuration;
         }
 
         Renderer::ShutDown();
@@ -54,7 +44,27 @@ namespace Story {
 
     }
 
+    void StoryApp::OnKeyPressed(KeyPressedEvent& event) {
+        STORY_LOG(event.GetKeyCode());
+    }
+
     StoryApp::StoryApp() {
+        mGameWindow.CreateWindow(800, 600, "Game");
+
+        mGameWindow.SetKeyPressedCallback([this](KeyPressedEvent &event)
+                                          { OnKeyPressed(event); });
+
+        Renderer::Init();
+    }
+
+    int StoryApp::GetGameWindowWidth() const
+    {
+        return mGameWindow.GetWindowWidth();
+    }
+
+    int StoryApp::GetGameWindowHeight() const
+    {
+        return mGameWindow.GetWindowHeight();
     }
 }
 
