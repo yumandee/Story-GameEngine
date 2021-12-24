@@ -16,39 +16,22 @@ namespace Story {
 
     void StoryApp::Run() {
         STORY_LOG("Story app running...");
-        mGameWindow.CreateWindow(800, 600,"Test");
-
-        if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-        {
-            std::cout << "Glad failed to initialize" << std::endl;
-        }
-
-        Renderer::Init();
-
-        Story::Shader myShader;
-        myShader.Load(
-            "Assets/Shader/myVertexShader.glsl", 
-            "Assets/Shader/myFragmentShader.glsl");
-        myShader.SetVec2IntUniform(
-            "screenSize", 
-            mGameWindow.GetWindowWidth(), 
-            mGameWindow.GetWindowHeight());
-        Story::Sprite fish;
-        fish.LoadImage("Assets/Textures/Test.png");
         
         mTimeOfNextFrame = std::chrono::steady_clock::now() + mFrameDuration;
 
         while (true) {
-            
+            mGameWindow.SetKeyPressedCallback([this](KeyPressedEvent &event)
+                                              { OnKeyPressed(event); });
+
             Renderer::ClearFrame();
 
             OnUpdate();
 
-            Renderer::Draw(fish, 100, 50, fish.GetWidth(), fish.GetHeight(), myShader);
 
             std::this_thread::sleep_until(mTimeOfNextFrame);
 
             mGameWindow.SwapBuffers();
+
             mGameWindow.PollEvents();
 
             mTimeOfNextFrame += mFrameDuration;
@@ -61,7 +44,27 @@ namespace Story {
 
     }
 
+    void StoryApp::OnKeyPressed(KeyPressedEvent& event) {
+        STORY_LOG(event.GetKeyCode());
+    }
+
     StoryApp::StoryApp() {
+        mGameWindow.CreateWindow(800, 600, "Game");
+
+        mGameWindow.SetKeyPressedCallback([this](KeyPressedEvent &event)
+                                          { OnKeyPressed(event); });
+
+        Renderer::Init();
+    }
+
+    int StoryApp::GetGameWindowWidth() const
+    {
+        return mGameWindow.GetWindowWidth();
+    }
+
+    int StoryApp::GetGameWindowHeight() const
+    {
+        return mGameWindow.GetWindowHeight();
     }
 }
 

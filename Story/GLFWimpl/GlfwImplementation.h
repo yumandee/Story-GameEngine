@@ -1,6 +1,8 @@
 #pragma once
 #include "WindowImplementation.h"
+#define GLFW_INCLUDE_NONE
 #include "glfw/glfw3.h"
+#include "glad/glad.h"
 
 
 namespace Story {
@@ -13,8 +15,14 @@ namespace Story {
 		virtual void PollEvents() override;
 		virtual int GetWindowWidth() const override;
 		virtual int GetWindowHeight() const override;
+		virtual void SetKeyPressedCallback(std::function<void(KeyPressedEvent &)> func) override;
 
 	private:
+		struct CallbackFunctions
+		{
+			std::function<void(KeyPressedEvent &)> KeyPressedCallback;
+		} mCallbacks;
+		
 		GLFWwindow* mWindow;
 	};
 }

@@ -1,4 +1,4 @@
-add_executable(adventure main.cpp)
+add_executable(adventure main.cpp AdventureApp.h AdventureApp.cpp Unit.h Unit.cpp)
 
 target_link_libraries(adventure story_lib)
 

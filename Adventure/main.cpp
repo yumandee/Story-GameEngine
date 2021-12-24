@@ -1,9 +1,4 @@
 #include "Story.h"
-
-class AdventureApp : public Story::StoryApp {
-	void OnUpdate() override {
-
-	}
-};
+#include "AdventureApp.h"
 
 START_STORY_GAME(AdventureApp);

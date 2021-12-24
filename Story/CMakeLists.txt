@@ -8,6 +8,7 @@ set(SOURCE_FILES
    OpenGLimpl/OpenGLSprite.cpp
    OpenGLimpl/OpenGLShader.cpp
    OpenGLimpl/OpenGLRenderer.cpp
+   Events.cpp
 )
 
 set(HEADER_FILES 
@@ -26,6 +27,8 @@ set(HEADER_FILES
    OpenGLimpl/OpenGLSprite.h
    OpenGLimpl/OpenGLShader.h
    OpenGLimpl/OpenGLRenderer.h
+   Events.h
+   KeyCodes.h
 )
 
 add_library(story_lib SHARED ${SOURCE_FILES} ${HEADER_FILES} )

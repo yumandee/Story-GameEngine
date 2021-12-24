@@ -35,4 +35,8 @@ namespace Story {
     int GameWindow::GetWindowHeight() const {
         return mWindow->GetWindowHeight();
     }
+
+    void GameWindow::SetKeyPressedCallback(std::function<void(KeyPressedEvent &)> func) {
+        mWindow->SetKeyPressedCallback(func);
+    }
 }

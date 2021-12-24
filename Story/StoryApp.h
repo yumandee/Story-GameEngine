@@ -9,7 +9,9 @@ namespace Story {
     public:
         void Run(); //starts the game
         virtual void OnUpdate();
-
+        virtual void OnKeyPressed(KeyPressedEvent &event);
+        int GetGameWindowWidth() const;
+        int GetGameWindowHeight() const; 
     protected:
         StoryApp();
 

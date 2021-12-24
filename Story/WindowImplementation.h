@@ -1,5 +1,7 @@
 #pragma once
 #include <string> 
+#include "pch.h"
+#include "Events.h"
 namespace Story {
     class WindowImplementation
     {
@@ -10,6 +12,9 @@ namespace Story {
         virtual void SwapBuffers() = 0;
         virtual int GetWindowWidth() const = 0;
         virtual int GetWindowHeight() const = 0;
+        virtual void SetKeyPressedCallback(std::function<void(KeyPressedEvent &)> func) = 0;
+
+        virtual ~WindowImplementation() {};
     };
 }
 

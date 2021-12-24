@@ -86,8 +86,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Events.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="GLFWimpl\GlfwImplementation.h" />
+    <ClInclude Include="KeyCodes.h" />
     <ClInclude Include="OpenGLimpl\OpenGLRenderer.h" />
     <ClInclude Include="OpenGLimpl\OpenGLShader.h" />
     <ClInclude Include="OpenGLimpl\OpenGLSprite.h" />
@@ -104,6 +106,7 @@
     <ClInclude Include="WindowImplementation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Events.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="GLFWimpl\GlfwImplementation.cpp" />
     <ClCompile Include="OpenGLimpl\OpenGLRenderer.cpp" />

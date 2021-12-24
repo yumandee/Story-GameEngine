@@ -1,8 +1,8 @@
 #pragma once
+#include "pch.h"
 #include "StoryUtils.h"
 #include "WindowImplementation.h"
-#include "pch.h"
-
+#include "Events.h"
 namespace Story {
 
     class STORY_API GameWindow
@@ -15,6 +15,7 @@ namespace Story {
         void PollEvents();
         int GetWindowWidth() const;
         int GetWindowHeight() const;
+        void SetKeyPressedCallback(std::function<void(KeyPressedEvent &)> func);
 
     private:
         std::unique_ptr<WindowImplementation> mWindow;
