@@ -5,7 +5,7 @@
 #include <vector>
 #include <string>
 
-class AdventureApp : public Story::StoryApp 
+class AdventureApp : public Story::StoryApp		
 {
 public: 
    AdventureApp();
@@ -19,4 +19,6 @@ private:
    int mPoints { 0 };
    int mFrameCounter;
    Story::Shader mShader;
+
+   bool mStart {false};
 };

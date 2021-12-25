@@ -46,6 +46,12 @@ int Unit::GetPointValue() const
 	return mPointValue;
 }
 
+int Unit::IncreaseDuration()
+{
+	mDuration++;
+	return mDuration;
+}
+
 bool Unit::CollideWith(const Unit& other) const
 {
 	int oXleft { other.GetPosX() };
@@ -62,7 +68,7 @@ bool Unit::CollideWith(const Unit& other) const
 	bool intersectOnY {
 		(mPosY <= oYbottom && oYbottom <= mPosY + GetUnitHeight()) ||
 			 (mPosY <= oYtop && oYtop <= mPosY + GetUnitHeight()) ||
-			 (oYbottom <= mPosY && mPosY  + GetUnitHeight() <= oYtop)
+			 (oYbottom <= mPosY && mPosY + GetUnitHeight() <= oYtop)
 	};
 
 	return intersectOnX && intersectOnY;

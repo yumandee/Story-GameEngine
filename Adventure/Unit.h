@@ -14,8 +14,8 @@ public:
    int GetPosY() const;
    int GetSpeed() const;
    int GetPointValue() const;
+   int IncreaseDuration();
    bool CollideWith(const Unit &other) const;
-
    void Draw(Story::Shader & shader);
 
    enum class Direction
@@ -39,7 +39,7 @@ private:
    int mPosY;
    int mSpeed;
    int mPointValue;
-
+   int mDuration{ 0 };
    Direction mDirection;
 };
 

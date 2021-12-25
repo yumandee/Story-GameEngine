@@ -15,8 +15,7 @@
 namespace Story {
 
     void StoryApp::Run() {
-        STORY_LOG("Story app running...");
-        
+
         mTimeOfNextFrame = std::chrono::steady_clock::now() + mFrameDuration;
 
         while (true) {
