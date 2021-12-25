@@ -5,7 +5,7 @@ class Unit
 {
 public:
    Unit() = delete;
-   Unit(const std::string & imageFile, int xPos, int yPos, int speed);
+   Unit(const std::string & imageFile, int xPos, int yPos, int speed, int pointValue);
    int GetUnitWidth() const;
    int GetUnitHeight() const;
    void SetPosX(int newX);
@@ -13,7 +13,7 @@ public:
    int GetPosX() const;
    int GetPosY() const;
    int GetSpeed() const;
-
+   int GetPointValue() const;
    bool CollideWith(const Unit &other) const;
 
    void Draw(Story::Shader & shader);
@@ -38,6 +38,7 @@ private:
    int mPosX;
    int mPosY;
    int mSpeed;
+   int mPointValue;
 
    Direction mDirection;
 };

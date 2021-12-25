@@ -2,7 +2,7 @@
 
 #include "AdventureApp.h"
 
-AdventureApp::AdventureApp() : mHero("Assets/Textures/kirby.png", 0, 0, 10), mFrameCounter(0)
+AdventureApp::AdventureApp() : mHero("Assets/Textures/kirby.png", 0, 0, 10, 0), mFrameCounter(0)
 {
     mShader.Load("Assets/Shaders/myVertexShader.glsl", "Assets/Shaders/myFragmentShader.glsl");
     mShader.SetVec2IntUniform(
@@ -14,7 +14,7 @@ AdventureApp::AdventureApp() : mHero("Assets/Textures/kirby.png", 0, 0, 10), mFr
 void AdventureApp::OnUpdate()
 {
    mHero.UpdatePosition();
-   //update existing viruses
+
    for (auto & enemy: mEnemies)
    {
       enemy.UpdatePosition();
@@ -22,8 +22,8 @@ void AdventureApp::OnUpdate()
 
    if (mFrameCounter % FRAMES_PER_SECOND == 0 && mEnemies.size() < 10) 
    {
-      int newX {rand() % (700)};
-      int newY {rand() % (500)};
+      int newX {rand() % (600)};
+      int newY {rand() % (450)};
       Unit::Direction newDir;
       int dirVal { rand() % 4 };
       if (dirVal == 0)
@@ -34,7 +34,26 @@ void AdventureApp::OnUpdate()
          newDir = Unit::Direction::Left;
       else
          newDir = Unit::Direction::Right;
-      mEnemies.push_back(Unit{ "Assets/Textures/enemy.png", newX, newY, 0 });
+
+      std::string imageFile;
+      int randEnemy { rand() % 10 };
+      int points {0};
+      if (randEnemy < 6)
+      {
+         imageFile = "Assets/Textures/enemy.png";
+         points = 100;
+      }
+      else if (randEnemy < 9)
+      {
+         imageFile = "Assets/Textures/fly.png";
+         points = 500;
+      }
+      else
+      {
+         imageFile = "Assets/Textures/dedede.png";
+         points = 1000;
+      }
+      mEnemies.push_back(Unit{imageFile, newX, newY, 0, points});
       mEnemies.back().SetDirection(newDir);
    }
 
@@ -42,7 +61,11 @@ void AdventureApp::OnUpdate()
    while(it != mEnemies.end()) 
    {
       if(mHero.CollideWith(*it))
+      {
+         mPoints += it->GetPointValue();
          it = mEnemies.erase(it);
+         std::cout << "Enemy defeated! Score: " << mPoints << std::endl;
+      }
       else 
          it++;
    }
@@ -55,6 +78,7 @@ void AdventureApp::OnUpdate()
    }
 
    mFrameCounter++;
+   
 }
 
 void AdventureApp::OnKeyPressed(Story::KeyPressedEvent& event)

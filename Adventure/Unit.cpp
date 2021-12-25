@@ -1,7 +1,7 @@
 #include "Unit.h"
 
-Unit::Unit(const std::string& imageFile, int xPos, int yPos, int speed) 
-	: mPosX(xPos), mPosY(yPos), mSpeed(speed), mDirection(Direction::None)
+Unit::Unit(const std::string& imageFile, int xPos, int yPos, int speed, int pointValue) 
+	: mPosX(xPos), mPosY(yPos), mSpeed(speed), mDirection(Direction::None), mPointValue(pointValue)
 {
 	mImage.LoadImage(imageFile);
 }
@@ -39,6 +39,11 @@ int Unit::GetPosY() const
 int Unit::GetSpeed() const
 {
 	return mSpeed;
+}
+
+int Unit::GetPointValue() const
+{
+	return mPointValue;
 }
 
 bool Unit::CollideWith(const Unit& other) const
