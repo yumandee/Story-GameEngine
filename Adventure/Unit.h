@@ -15,6 +15,7 @@ public:
    int GetSpeed() const;
    int GetPointValue() const;
    int IncreaseDuration();
+   
    bool CollideWith(const Unit &other) const;
    void Draw(Story::Shader & shader);
 
