@@ -1,7 +1,7 @@
 #include "Unit.h"
 
-Unit::Unit(const std::string& imageFile, int xPos, int yPos, int speed) 
-	: mPosX(xPos), mPosY(yPos), mSpeed(speed), mDirection(Direction::None)
+Unit::Unit(const std::string& imageFile, int xPos, int yPos, int speed, int pointValue) 
+	: mPosX(xPos), mPosY(yPos), mSpeed(speed), mDirection(Direction::None), mPointValue(pointValue)
 {
 	mImage.LoadImage(imageFile);
 }
@@ -41,6 +41,17 @@ int Unit::GetSpeed() const
 	return mSpeed;
 }
 
+int Unit::GetPointValue() const
+{
+	return mPointValue;
+}
+
+int Unit::IncreaseDuration()
+{
+	mDuration++;
+	return mDuration;
+}
+
 bool Unit::CollideWith(const Unit& other) const
 {
 	int oXleft { other.GetPosX() };
@@ -57,7 +68,7 @@ bool Unit::CollideWith(const Unit& other) const
 	bool intersectOnY {
 		(mPosY <= oYbottom && oYbottom <= mPosY + GetUnitHeight()) ||
 			 (mPosY <= oYtop && oYtop <= mPosY + GetUnitHeight()) ||
-			 (oYbottom <= mPosY && mPosY  + GetUnitHeight() <= oYtop)
+			 (oYbottom <= mPosY && mPosY + GetUnitHeight() <= oYtop)
 	};
 
 	return intersectOnX && intersectOnY;
