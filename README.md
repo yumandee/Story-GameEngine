@@ -1,16 +1,17 @@
-# F21_Mandy_Yu
+# Adventure Story Game Engine
+
 Game Engines Project Fall 2021
 
-Checkpoint 1 of Game Engines Project
+This project utilizes GLFW, Glad, stbimage to create a basic game engine and functional game.
 
-Checkpoint 2 Completed 12/24
-
-MyGame renamed to Adventure
-Bubble renamed to Story
+## CMake
 
 To utilize with CMAKE, build adventure.sln and run /Debug/adventure.exe
 
-Changes made:
+## Insert GIF here
+
+
+## Features
 
 - Sprites changed to different characters.
 - Different sized enemies will spawn. 
