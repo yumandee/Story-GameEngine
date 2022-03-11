@@ -24,5 +24,6 @@ To utilize with CMAKE, build adventure.sln and run /Debug/adventure.exe
 ## Languages and Technologies 
 
 - C 
+- C++
 - CMake
 - Visual Studio
