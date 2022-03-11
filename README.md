@@ -13,7 +13,7 @@ This project utilizes GLFW, Glad, stbimage to create a basic game engine and fun
 - When the player defeats an ally, score is deducted.
 - Enemies will periodically despawn. 
 
-## Base Game Preview
+## Basic Game Preview
 
 ![Game Preview](gameengine.gif)
 
