@@ -6,6 +6,7 @@ This project utilizes GLFW, Glad, stbimage to create a basic game engine and fun
 
 ## Features
 
+- User can control Kirby sprite to move around the screen.
 - Sprites changed to different characters.
 - Different sized enemies will spawn. 
 - When the player defeats an enemy, a score is tallied. 
